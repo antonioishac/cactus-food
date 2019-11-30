@@ -1,0 +1,13 @@
+Spring boot
+	Nos facilita nas configurações do projeto.
+
+Spring Cloud
+
+	Hitrix
+	
+	
+
+Injeção de dependencia
+	
+	
+
