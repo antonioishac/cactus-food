@@ -1,13 +1,21 @@
-Spring boot
-	Nos facilita nas configurações do projeto.
+Equals and hash code
 
-Spring Cloud
+serializacao
 
-	Hitrix
-	
-	
+Metodos HTTP
+	- Conhecer o conceito de idempotência
+		significa que tem o poder de ser aplicado mais de uma vez
+		sem que o resultado da primeira requisicao se altere
 
-Injeção de dependencia
-	
-	
+	- principais metodos HTTP
+		- GET
+		- POST
+		- PUT
+		- PATCH
+		- DELETE
+		- HEAD
+		- OPTIONS
 
+	- status HTTP
+		- Lista de status HTTP: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+		- Códigos de status de respostas HTTP: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
