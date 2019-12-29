@@ -17,12 +17,12 @@ public class CadastroCozinhaService {
 	private CozinhaRepository cozinhaRepository;
 
 	public Cozinha salvar(Cozinha cozinha) {
-		return cozinhaRepository.salvar(cozinha);
+		return cozinhaRepository.save(cozinha);
 	}
 
 	public void ecluir(Long id) {
 		try {
-			cozinhaRepository.remover(id);
+			cozinhaRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoEncontradaException(
 					String.format("Nao existe um cadastro de cozinha com o codigo %d", id));

@@ -3,6 +3,7 @@ package br.com.cactus.food.api.controller;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +38,16 @@ public class RestauranteController {
 
 	@GetMapping
 	public List<Restaurante> listar() {
-		return restauranteRepository.listar();
+		return restauranteRepository.findAll();
 	}
 
 	@GetMapping("/{restauranteId}")
 	public ResponseEntity<Restaurante> buscar(@PathVariable("restauranteId") Long id) {
-		Restaurante restaurante = restauranteRepository.buscar(id);
-		return restaurante == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(restaurante);
+		Optional<Restaurante> restaurante = restauranteRepository.findById(id);
+		if (restaurante.isPresent()) {
+			return ResponseEntity.ok(restaurante.get());
+		}
+		return ResponseEntity.notFound().build();
 	}
 
 	@PostMapping
@@ -62,7 +66,7 @@ public class RestauranteController {
 	@PutMapping("/{restauranteId}")
 	public ResponseEntity<?> atualizar(@PathVariable("restauranteId") Long id, @RequestBody Restaurante restaurante) {
 		try {
-			Restaurante restauranteAtual = restauranteRepository.buscar(id);
+			Restaurante restauranteAtual = restauranteRepository.findById(id).orElse(null);
 
 			if (restauranteAtual != null) {
 				BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
@@ -81,7 +85,7 @@ public class RestauranteController {
 			@PathVariable Long restauranteId,
 			@RequestBody Map<String, Object> campos) {
 
-		Restaurante restauranteAtual = restauranteRepository.buscar(restauranteId);
+		Restaurante restauranteAtual = restauranteRepository.findById(restauranteId).orElse(null);
 
 		if (restauranteAtual == null) {
 			return ResponseEntity.notFound().build();

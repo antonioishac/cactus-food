@@ -19,3 +19,6 @@ Metodos HTTP
 	- status HTTP
 		- Lista de status HTTP: https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 		- Códigos de status de respostas HTTP: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
+
+Optional
+	- https://blog.algaworks.com/chega-de-nullpointerexception/
