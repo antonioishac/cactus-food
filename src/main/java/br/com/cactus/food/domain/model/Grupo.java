@@ -1,30 +1,36 @@
 package br.com.cactus.food.domain.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonRootName;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@JsonRootName("cozinha")
-@Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Data
 @Entity
-public class Cozinha {
+public class Grupo {
 
-	//@JsonIgnore
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	//@JsonProperty("titulo")
-	@Column(name = "nome", nullable = false)
+	@Column(nullable = false)
 	private String nome;
+
+	@ManyToMany
+	@JoinTable(name = "grupo_permissao", joinColumns = @JoinColumn(name = "grupo_id"),
+					inverseJoinColumns = @JoinColumn(name = "permissao_id"))
+	private List<Permissao> permissoes = new ArrayList<>();
 
 }
