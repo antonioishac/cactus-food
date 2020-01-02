@@ -2,6 +2,10 @@ Equals and hash code
 
 serializacao
 
+Graal
+
+Grafana prometheus
+
 Metodos HTTP
 	- Conhecer o conceito de idempotência
 		significa que tem o poder de ser aplicado mais de uma vez
@@ -22,3 +26,12 @@ Metodos HTTP
 
 Optional
 	- https://blog.algaworks.com/chega-de-nullpointerexception/
+
+keywords query methods
+	- https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
+
+named-query and named-native-query
+	- https://github.com/pkainulainen/spring-data-jpa-examples/blob/master/query-methods/src/main/resources/META-INF/orm.xml
+
+Declaração de variáveis com "var"
+	- https://www.infoq.com/br/articles/java-10-var-type/
