@@ -7,6 +7,10 @@ import br.com.cactusfood.domain.model.Restaurante;
 
 public interface RestauranteRepositoryQueries {
 
-	List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal);
+	List<Restaurante> findRestauranteJpql(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal);
+
+	List<Restaurante> findRestauranteSql(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal);
+
+	List<Restaurante> findRestauranteCriteria(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal);
 
 }

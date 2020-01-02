@@ -61,6 +61,33 @@ public class TesteController {
 		return restauranteRepository.findTop2ByNomeContaining(nome);
 	}
 
+	/**
+	 * consulta com criteria dinamico
+	 */
+	@GetMapping("/restaurantes/por-nome-e-frete-criteria")
+	public List<Restaurante> restaurantesPorNomeFreteCriteria(String nome,
+			BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
+		return restauranteRepository.findRestauranteCriteria(nome, taxaFreteInicial, taxaFreteFinal);
+	}
+
+	/**
+	 * consulta com JPQL dinamico
+	 */
+	@GetMapping("/restaurantes/por-nome-e-frete-jpql")
+	public List<Restaurante> restaurantesPorNomeFreteJpql(String nome,
+			BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
+		return restauranteRepository.findRestauranteJpql(nome, taxaFreteInicial, taxaFreteFinal);
+	}
+
+	/**
+	 * consulta com SQL dinamico
+	 */
+	@GetMapping("/restaurantes/por-nome-e-frete-sql")
+	public List<Restaurante> restaurantesPorNomeFreteSql(String nome,
+			BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
+		return restauranteRepository.findRestauranteSql(nome, taxaFreteInicial, taxaFreteFinal);
+	}
+
 	@GetMapping("/restaurantes/count-por-cozinha")
 	public int restaurantesCountPorCozinha(Long cozinhaId) {
 		return restauranteRepository.countByCozinhaId(cozinhaId);
