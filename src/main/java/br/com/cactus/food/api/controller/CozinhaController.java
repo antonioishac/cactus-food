@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -72,6 +73,13 @@ public class CozinhaController {
 
 		return ResponseEntity.notFound().build();
 	}
+
+	@GetMapping("/buscar-pelo-nome")
+	public ResponseEntity<List<Cozinha>> burcarPeloNome(String nome) {
+		List<Cozinha> cozinhas = cozinhaRepository.findByNomeContaining(nome);
+		return ResponseEntity.ok(cozinhas);
+	}
+
 
 	@DeleteMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> remover(@PathVariable("cozinhaId") Long id) {
