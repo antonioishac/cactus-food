@@ -13,7 +13,9 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 
 	@Override
 	public List<Restaurante> find(String nome, BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal) {
-		// TODO Auto-generated method stub
+
+
+
 		return null;
 	}
 
