@@ -1,10 +1,12 @@
-Equals and hash code
+Equals and hash code, conceito, porque utilizar ?
 
 serializacao
 
 Graal
 
 Grafana prometheus
+
+Estudar as hierarquias de exceptions
 
 Metodos HTTP
 	- Conhecer o conceito de idempotência
