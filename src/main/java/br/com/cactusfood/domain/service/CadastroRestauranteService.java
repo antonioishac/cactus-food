@@ -3,10 +3,9 @@ package br.com.cactusfood.domain.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cactusfood.domain.exception.EntidadeNaoEncontradaException;
+import br.com.cactusfood.domain.exception.RestauranteNaoEncontradoException;
 import br.com.cactusfood.domain.model.Cozinha;
 import br.com.cactusfood.domain.model.Restaurante;
-import br.com.cactusfood.domain.repository.CozinhaRepository;
 import br.com.cactusfood.domain.repository.RestauranteRepository;
 
 @Service
@@ -16,15 +15,25 @@ public class CadastroRestauranteService {
 	private RestauranteRepository restauranteRepository;
 
 	@Autowired
-	private CozinhaRepository cozinhaRepository;
+	private CadastroCozinhaService cozinhaService;
 
 	public Restaurante salvar(Restaurante restaurante) {
-		Long cozinhaId = restaurante.getCozinha().getId();
-		Cozinha cozinha = cozinhaRepository.findById(cozinhaId)
-				.orElseThrow(()-> new EntidadeNaoEncontradaException(
-						String.format("Nao foi encontrado a cozinha com o codigo %d", cozinhaId)));
 
+		// Atribui o código da cozinha a uma variável.
+		Long cozinhaId = restaurante.getCozinha().getId();
+
+		// Busca o objeto cozinha.
+		Cozinha cozinha = cozinhaService.buscarOuFalhar(cozinhaId);
+
+		// Atribui a cozinha a um restaurante
 		restaurante.setCozinha(cozinha);
+
+		// persiste o restaurante
 		return restauranteRepository.save(restaurante);
+	}
+
+	public Restaurante buscarOuFalhar(Long restauranteId) {
+		return restauranteRepository.findById(restauranteId)
+			.orElseThrow(()-> new RestauranteNaoEncontradoException(restauranteId));
 	}
 }
