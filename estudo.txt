@@ -37,3 +37,9 @@ named-query and named-native-query
 
 Declaração de variáveis com "var"
 	- https://www.infoq.com/br/articles/java-10-var-type/
+
+ExcptionHandler:
+
+ControllerAdvice:
+
+RFC 7807:
